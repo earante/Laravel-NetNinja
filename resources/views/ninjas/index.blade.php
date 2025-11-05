@@ -1,9 +1,5 @@
 <x-layout>
-    @if ($greeting == 'hello')
-        <p>Hi from inside the if statement</p>
-    @endif
 
-    <p>{{ $greeting }}</p>
     <ul>
         @foreach ($ninjas as $ninja)
             <li>
