@@ -11,18 +11,21 @@ class NinjaController extends Controller
     {
         //route --> /ninjas
         //fetch all records & pass into the view index view
-        $ninjas = Ninja::orderBy("created_at", "desc")->get();
-        return view('ninjas.index',[ "ninjas" => $ninjas] );
+        $ninja = Ninja::orderBy("created_at", "desc")->paginate(10);
+        return view('ninjas.index',[ "ninjas" => $ninja] );
     }
 
     public function show($id) {
         //route --> /ninjas/{id}
         //fetch a record by id & pass into the index view
+        $ninja = Ninja::findOrFail($id);
+        return view('ninjas.show', ["ninja" => $ninja] );
     }
 
     public function create() {
         //route --> /ninjas/create
         //render a create view (with web form) to user
+            return view('ninjas.create');
     }
 
     public function store() {
